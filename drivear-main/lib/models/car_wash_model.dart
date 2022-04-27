@@ -5,19 +5,19 @@ import 'package:car_wash/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class CarWash {
+class Wash {
   String? id;
   String? name;
   String? imageUrl;
   String? phone;
-  List<CarWashService>? services;
+  List<WashService>? services;
   LatLng? location;
   String? legalAddress;
   double? rating;
   int? avgPrice;
   List<String>? additionalServices;
 
-  CarWash({
+  Wash({
       this.id,
       this.name,
       this.imageUrl,
@@ -30,22 +30,22 @@ class CarWash {
       this.additionalServices
   });
 
-  static CarWash fromJson(Map<String, dynamic>? json) => CarWash(
+  static Wash fromJson(Map<String, dynamic>? json) => Wash(
     id: json!['id'],
     name: json['name'],
     imageUrl: json['imageUrl'],
       phone: json['phone'],
       legalAddress: json['legalAddress'],
-    services: json['services'] != null ? (json['services'] as List<dynamic>).map((e) => CarWashService.fromJson(e)).toList() : [],
+    services: json['services'] != null ? (json['services'] as List<dynamic>).map((e) => WashService.fromJson(e)).toList() : [],
     additionalServices: json['additionalServices'] != null ? (json['additionalServices'] as List<dynamic>).map((e) => e.toString()).toList() : [],
     location: LatLng((json['location'] as List<dynamic>).first, (json['location'] as List<dynamic>).last),
-    avgPrice: json['services'] != null ? (json['services'] as List<dynamic>).map((e) => CarWashService.fromJson(e)).fold(0, ((value, element) => (value as int) + element.price!) ) : 0
+    avgPrice: json['services'] != null ? (json['services'] as List<dynamic>).map((e) => WashService.fromJson(e)).fold(0, ((value, element) => (value as int) + element.price!) ) : 0
   );
 
-  static CarWash fromSnapshot(DocumentSnapshot snapshot) =>
+  static Wash fromSnapshot(DocumentSnapshot snapshot) =>
       snapshot.data() != null
-          ? CarWash.fromJson(snapshot.data()!)
-          : CarWash();
+          ? Wash.fromJson(snapshot.data()!)
+          : Wash();
 
 
   Map<String, dynamic> toJson() => {

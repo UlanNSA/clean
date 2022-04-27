@@ -1,6 +1,6 @@
 import 'package:car_wash/screens/about/about_screen.dart';
 import 'package:car_wash/screens/addresses_screen/addresses_screen.dart';
-import 'package:car_wash/screens/car_wash_details/car_wash_detail.dart';
+import 'package:car_wash/screens/car_wash_details/wash_detail.dart';
 import 'package:car_wash/screens/home/home_screen.dart';
 import 'package:car_wash/screens/my_orders/my_order_screen.dart';
 import 'package:car_wash/screens/otp/otp_screen.dart';

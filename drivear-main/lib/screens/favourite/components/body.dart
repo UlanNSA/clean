@@ -5,7 +5,7 @@ import 'package:car_wash/models/car_wash_model.dart';
 import 'package:car_wash/models/favourite_carwash.dart';
 import 'package:car_wash/provider/auth_provider.dart';
 import 'package:car_wash/provider/fire_storage_provider.dart';
-import 'package:car_wash/screens/car_wash_details/car_wash_detail.dart';
+import 'package:car_wash/screens/car_wash_details/wash_detail.dart';
 import 'package:car_wash/serviceLocator.dart';
 import 'package:car_wash/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,7 +17,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List<CarWash> favouriteList = [];
+  List<Wash> favouriteList = [];
   bool isLoading = false;
   final FireStorageProvider _storageProvider =
       serviceLocator<FireStorageProvider>();
@@ -50,7 +50,7 @@ class _BodyState extends State<Body> {
     );
   }
 
-  Future<List<CarWash>> getFavouriteList() async {
+  Future<List<Wash>> getFavouriteList() async {
     setState(() {
       isLoading = true;
     });
@@ -60,7 +60,7 @@ class _BodyState extends State<Body> {
         .doc(_authStorage.currentUser!.id)
         .get();
     FavouriteCarwashList _list = FavouriteCarwashList.fromSnapshot(_docSnap);
-    List<CarWash>? resultList = [];
+    List<Wash>? resultList = [];
 
     List<String> listIds = _list.list!
         .where((element) => element.likeOrDislike!)
@@ -74,7 +74,7 @@ class _BodyState extends State<Body> {
           .get()
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((_docSnap) {
-          CarWash _carWash = CarWash.fromSnapshot(_docSnap);
+          Wash _carWash = Wash.fromSnapshot(_docSnap);
           resultList.add(_carWash);
         });
       });
@@ -92,7 +92,7 @@ class _BodyState extends State<Body> {
     }
   }
 
-  Widget buildCard(BuildContext context, CarWash carwash) {
+  Widget buildCard(BuildContext context, Wash carwash) {
     List<Color> colors = [
       Colors.red,
       Colors.green,
@@ -108,7 +108,7 @@ class _BodyState extends State<Body> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CarWashDetail(carWash: carwash)),
+              builder: (context) => WashDetail(carWash: carwash)),
         );
       },
       child: Container(

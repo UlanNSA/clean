@@ -1,13 +1,13 @@
 import 'dart:io';
 
-class CarWashService {
+class WashService {
   final int? id;
   final String? name;
   final String? imageUrl;
   final String? description;
   final int? price;
 
-  CarWashService({
+  WashService({
     this.id,
     this.name,
     this.imageUrl,
@@ -23,7 +23,7 @@ class CarWashService {
     'price': price
   };
 
-  static CarWashService fromJson(Map<String, dynamic> json) => CarWashService(
+  static WashService fromJson(Map<String, dynamic> json) => WashService(
     id: json['id'],
     name: json['name'],
     imageUrl: json['imageUrl'],

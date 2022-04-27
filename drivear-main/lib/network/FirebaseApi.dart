@@ -7,7 +7,7 @@ import 'package:car_wash/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseApi {
-  static Future<String> createCarWash(CarWash carWash) async {
+  static Future<String> createCarWash(Wash carWash) async {
     final docCarWash = FirebaseFirestore.instance.collection('car_wash').doc();
 
     carWash.id = docCarWash.id;
@@ -16,11 +16,11 @@ class FirebaseApi {
     return docCarWash.id;
   }
 
-  static Stream<List<CarWash>> readCarWashs() =>
+  static Stream<List<Wash>> readCarWashs() =>
       FirebaseFirestore.instance
           .collection('car_wash').snapshots()
           .transform(
-            Utils.transformer(CarWash.fromJson) as StreamTransformer<QuerySnapshot, List<CarWash>>
+            Utils.transformer(Wash.fromJson) as StreamTransformer<QuerySnapshot, List<Wash>>
           );
 
   static Future<void> signUp() async {

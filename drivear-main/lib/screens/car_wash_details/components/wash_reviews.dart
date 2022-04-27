@@ -9,16 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:car_wash/models/message_model.dart';
 
-class CarWashReviews extends StatefulWidget {
-  final CarWash carWash;
+class WashReviews extends StatefulWidget {
+  final Wash carWash;
 
-  const CarWashReviews({Key? key, required this.carWash}) : super(key: key);
+  const WashReviews({Key? key, required this.carWash}) : super(key: key);
 
   @override
-  _CarWashReviewsState createState() => _CarWashReviewsState();
+  _WashReviewsState createState() => _WashReviewsState();
 }
 
-class _CarWashReviewsState extends State<CarWashReviews> {
+class _WashReviewsState extends State<WashReviews> {
   @override
   Widget build(BuildContext context) {
     double rating = 3.0;

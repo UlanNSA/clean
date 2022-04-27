@@ -4,10 +4,10 @@ import 'package:car_wash/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CarWashInformation extends StatelessWidget {
-  final CarWash carWash;
+class WashInformation extends StatelessWidget {
+  final Wash carWash;
 
-  const CarWashInformation({Key? key, required this.carWash}) : super(key: key);
+  const WashInformation({Key? key, required this.carWash}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:car_wash/components/default_drawer.dart';
 import 'package:car_wash/network/FirebaseApi.dart';
-import 'package:car_wash/provider/car_wash_provider.dart';
-import 'package:car_wash/screens/car_wash_details/car_wash_detail.dart';
+import 'package:car_wash/provider/wash_provider.dart';
+import 'package:car_wash/screens/car_wash_details/wash_detail.dart';
 import 'package:car_wash/screens/google_maps/GoogleMapsScreen.dart';
 import 'package:car_wash/constans.dart';
 import 'package:car_wash/screens/main/components/car_wash_list.dart';
@@ -22,7 +22,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final List<CarWash> _carWashList = [
+  final List<Wash> _carWashList = [
     // CarWash("НАВИГАТОР, комплекс", "", [], LatLng(43.259321, 76.911274), 4.5, 1200),
     // CarWash("Ehrle.RW, автомойка самообслуживания", "", [],
     //     LatLng(43.233024, 76.954797), 4.5, 1500),
@@ -52,13 +52,36 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 centerTitle: true,
                 actions: [
-
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        _screenState = !_screenState;
+                      });
+                    },
+                    child: SizedBox(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/icons/listIcon.svg"),
+                          SizedBox(width: getProportionateScreenWidth(5)),
+                          Text(
+                            _screenState ? "The list" : "The Map",
+                            style: TextStyle(
+                                fontSize: getProportionateScreenWidth(15),
+                                fontWeight: FontWeight.w800),
+                          ),
+                          SizedBox(width: getProportionateScreenWidth(5)),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               )),
         ),
       ),
       drawer: buildDrawer(context: context),
-      body: CarWashList(),
+      body: _screenState == true
+          ? GoogleMapsScreen(cameraPosition: LatLng(43.25654, 76.92848))
+          : CarWashList(),
     );
   }
 

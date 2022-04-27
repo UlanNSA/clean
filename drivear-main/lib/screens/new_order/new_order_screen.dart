@@ -20,7 +20,7 @@ import 'package:intl/intl.dart';
 import 'package:time_picker_widget/time_picker_widget.dart';
 
 class NewOrderScreen extends StatefulWidget {
-  final CarWash carWash;
+  final Wash carWash;
   static String routeName = '/new-order';
 
 
@@ -35,7 +35,7 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
   final AuthProvider _authProvider = serviceLocator<AuthProvider>();
   DateTime? currentDate;
   TimeOfDay? selectedTime;
-  List<CarWashService> selectedServices = [];
+  List<WashService> selectedServices = [];
   List<String> carTypes = ['House', 'Flat', 'Room'];
   List<String> serviceType = ['Econom', 'Premium', 'Bisness', 'Lux'];
   int total = 0;
@@ -63,7 +63,7 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
     });
   }
 
-  void addOrRemove(CarWashService service) {
+  void addOrRemove(WashService service) {
     if (selectedServices.contains(service)) {
       setState(() {
         selectedServices.remove(service);

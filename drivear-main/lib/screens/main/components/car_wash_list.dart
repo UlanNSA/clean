@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:car_wash/constans.dart';
 import 'package:car_wash/models/car_wash_model.dart';
 import 'package:car_wash/network/FirebaseApi.dart';
-import 'package:car_wash/provider/car_wash_provider.dart';
+import 'package:car_wash/provider/wash_provider.dart';
 import 'package:car_wash/provider/fire_storage_provider.dart';
-import 'package:car_wash/screens/car_wash_details/car_wash_detail.dart';
+import 'package:car_wash/screens/car_wash_details/wash_detail.dart';
 import 'package:car_wash/serviceLocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,7 +19,7 @@ class CarWashList extends StatefulWidget {
 class _CarWashListState extends State<CarWashList> {
   final FireStorageProvider _storageProvider =
       serviceLocator<FireStorageProvider>();
-  List<CarWash> carwashList = [];
+  List<Wash> carwashList = [];
   bool isLoading = false;
 
   Future<void> fetchCarwashs() async {
@@ -43,7 +43,7 @@ class _CarWashListState extends State<CarWashList> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<CarWashProvider>(context);
+    final provider = Provider.of<WashProvider>(context);
     final _carWashList = provider.carWashs!;
 
     return RefreshIndicator(
@@ -58,7 +58,7 @@ class _CarWashListState extends State<CarWashList> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CarWashDetail(carWash: _carWashList[index])),
+                          WashDetail(carWash: _carWashList[index])),
                 );
               },
               leading: FutureBuilder(

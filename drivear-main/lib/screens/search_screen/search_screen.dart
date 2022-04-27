@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:car_wash/components/default_drawer.dart';
 import 'package:car_wash/constans.dart';
 import 'package:car_wash/models/car_wash_model.dart';
-import 'package:car_wash/provider/car_wash_provider.dart';
+import 'package:car_wash/provider/wash_provider.dart';
 import 'package:car_wash/provider/fire_storage_provider.dart';
-import 'package:car_wash/screens/car_wash_details/car_wash_detail.dart';
+import 'package:car_wash/screens/car_wash_details/wash_detail.dart';
 import 'package:car_wash/serviceLocator.dart';
 import 'package:car_wash/size_config.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +20,12 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final FireStorageProvider _storageProvider = serviceLocator<FireStorageProvider>();
   final TextEditingController searchController = TextEditingController();
-  List<CarWash> filteredCarWashList = [];
+  List<Wash> filteredCarWashList = [];
   String searchValue = "";
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<CarWashProvider>(context);
+    final provider = Provider.of<WashProvider>(context);
     final _carWashList = provider.carWashs!;
 
     return Scaffold(
@@ -88,7 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) =>
-                    CarWashDetail(carWash: _list[index])),
+                    WashDetail(carWash: _list[index])),
               );
             },
             leading: FutureBuilder(

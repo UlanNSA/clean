@@ -4,7 +4,7 @@ import 'package:car_wash/components/default_bottom_navigator.dart';
 import 'package:car_wash/constans.dart';
 import 'package:car_wash/models/car_wash_model.dart';
 import 'package:car_wash/network/FirebaseApi.dart';
-import 'package:car_wash/provider/car_wash_provider.dart';
+import 'package:car_wash/provider/wash_provider.dart';
 import 'package:car_wash/provider/info_window_model.dart';
 import 'package:car_wash/screens/favourite/favourite_screen.dart';
 import 'package:car_wash/screens/main/main_screen.dart';
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
-    StreamBuilder<List<CarWash>>(
+    StreamBuilder<List<Wash>>(
         stream: FirebaseApi.readCarWashs(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               } else {
                 final todos = snapshot.data;
 
-                final provider = Provider.of<CarWashProvider>(context);
+                final provider = Provider.of<WashProvider>(context);
                 provider.setCarWashs(todos);
 
                 return  ChangeNotifierProvider(

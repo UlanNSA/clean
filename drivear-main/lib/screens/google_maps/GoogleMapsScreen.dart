@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:car_wash/components/default_button.dart';
 import 'package:car_wash/constans.dart';
 import 'package:car_wash/models/car_wash_model.dart';
-import 'package:car_wash/provider/car_wash_provider.dart';
+import 'package:car_wash/provider/wash_provider.dart';
 import 'package:car_wash/provider/info_window_model.dart';
-import 'package:car_wash/screens/car_wash_details/car_wash_detail.dart';
+import 'package:car_wash/screens/car_wash_details/wash_detail.dart';
 import 'package:car_wash/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<CarWashProvider>(context);
+    final provider = Provider.of<WashProvider>(context);
     final providerObject = Provider.of<InfoWindowModel>(context, listen: false);
     final Set<Marker> _markers = {};
     var _carWashList = [];
@@ -297,7 +297,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          CarWashDetail(
+                                                          WashDetail(
                                                               carWash:
                                                                   providerObject
                                                                       .carWash!)),

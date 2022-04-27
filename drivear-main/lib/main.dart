@@ -1,6 +1,6 @@
 // @dart = 2.8
 import 'package:car_wash/navigation/routes.dart';
-import 'package:car_wash/provider/car_wash_provider.dart';
+import 'package:car_wash/provider/wash_provider.dart';
 import 'package:car_wash/provider/info_window_model.dart';
 import 'package:car_wash/provider/loading_provider.dart';
 import 'package:car_wash/screens/sign_in/sign_in_screen.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => CarWashProvider()),
+          ChangeNotifierProvider(create: (context) => WashProvider()),
         ],
         child: MaterialApp(
           title: 'Drive',

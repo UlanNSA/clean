@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class InfoWindowModel extends ChangeNotifier {
   bool _showInfoWindow = false;
   bool _tempHidden = false;
-  CarWash? _carWash;
+  Wash? _carWash;
   double? _leftMargin;
   double? _topMargin;
 
@@ -15,7 +15,7 @@ class InfoWindowModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateCarWash(CarWash carWash) {
+  void updateCarWash(Wash carWash) {
     _carWash = carWash;
   }
 
@@ -52,5 +52,5 @@ class InfoWindowModel extends ChangeNotifier {
 
   double? get topMargin => _topMargin;
 
-  CarWash? get carWash => _carWash;
+  Wash? get carWash => _carWash;
 }

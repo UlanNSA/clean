@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class Order {
   String? id;
-  List<CarWashService>? services;
+  List<WashService>? services;
   DateTime? date;
   TimeOfDay? time;
   int? price;
-  CarWash? carWashName;
+  Wash? carWashName;
   String? carType;
   String? serviceType;
   String? status;
@@ -42,7 +42,7 @@ class Order {
   static Order fromJson(Map<String, dynamic> json) => Order(
         id: json['id'],
         services: (json['services'] as List<dynamic>)
-            .map((e) => CarWashService.fromJson(e))
+            .map((e) => WashService.fromJson(e))
             .toList(),
         date: DateTime.parse(json['date']),
         time: TimeOfDay(
@@ -53,6 +53,6 @@ class Order {
         serviceType: json['serviceType'],
         status: json['status'],
         userid: json['userid'],
-        carWashName: CarWash.fromJson(json['carWashName']),
+        carWashName: Wash.fromJson(json['carWashName']),
       );
 }

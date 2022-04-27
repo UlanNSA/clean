@@ -6,7 +6,7 @@ import 'package:car_wash/models/car_wash_service_model.dart';
 import 'package:car_wash/models/order_model.dart';
 import 'package:car_wash/models/orders_response_model.dart';
 import 'package:car_wash/provider/fire_storage_provider.dart';
-import 'package:car_wash/screens/car_wash_details/components/car_wash_service_card.dart';
+import 'package:car_wash/screens/car_wash_details/components/wash_service_card.dart';
 import 'package:car_wash/serviceLocator.dart';
 import 'package:car_wash/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,10 +16,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
-class CarWashServices extends StatelessWidget {
-  final CarWash carWash;
+class WashServices extends StatelessWidget {
+  final Wash carWash;
 
-  const CarWashServices({
+  const WashServices({
     Key? key,
     required this.carWash,
   }) : super(key: key);
@@ -186,7 +186,7 @@ class CarWashServices extends StatelessWidget {
   }
 
   List<Widget> _getServices(
-      BuildContext context, List<CarWashService> services) {
+      BuildContext context, List<WashService> services) {
     List<Widget> childs = [];
 
     for (var i = 0; i < services.length; i++) {

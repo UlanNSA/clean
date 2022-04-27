@@ -3,9 +3,9 @@ import 'package:car_wash/constans.dart';
 import 'package:car_wash/models/car_wash_model.dart';
 import 'package:car_wash/models/favourite_carwash.dart';
 import 'package:car_wash/provider/auth_provider.dart';
-import 'package:car_wash/screens/car_wash_details/components/car_wash_information.dart';
-import 'package:car_wash/screens/car_wash_details/components/car_wash_navigation.dart';
-import 'package:car_wash/screens/car_wash_details/components/car_wash_reviews.dart';
+import 'package:car_wash/screens/car_wash_details/components/wash_information.dart';
+import 'package:car_wash/screens/car_wash_details/components/wash_navigation.dart';
+import 'package:car_wash/screens/car_wash_details/components/wash_reviews.dart';
 import 'package:car_wash/screens/new_order/new_order_screen.dart';
 import 'package:car_wash/serviceLocator.dart';
 import 'package:car_wash/size_config.dart';
@@ -13,18 +13,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'components/car_wash_services.dart';
+import 'components/wash_services.dart';
 
-class CarWashDetail extends StatefulWidget {
-  final CarWash carWash;
+class WashDetail extends StatefulWidget {
+  final Wash carWash;
   static String routeName = "/carWashDetail";
-  CarWashDetail({Key? key, required this.carWash}) : super(key: key);
+  WashDetail({Key? key, required this.carWash}) : super(key: key);
 
   @override
-  _CarWashDetailState createState() => _CarWashDetailState();
+  _WashDetailState createState() => _WashDetailState();
 }
 
-class _CarWashDetailState extends State<CarWashDetail> {
+class _WashDetailState extends State<WashDetail> {
   int _currentTab = 0;
   late List<Widget> _widgetOptions;
   bool likeOrDislike = false;
@@ -33,10 +33,10 @@ class _CarWashDetailState extends State<CarWashDetail> {
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      CarWashServices(carWash: widget.carWash,),
-      CarWashNavigation(carWash: widget.carWash),
-      CarWashInformation(carWash: widget.carWash),
-      CarWashReviews(carWash: widget.carWash,),
+      WashServices(carWash: widget.carWash,),
+      WashNavigation(carWash: widget.carWash),
+      WashInformation(carWash: widget.carWash),
+      WashReviews(carWash: widget.carWash,),
     ];
     fetchLike();
   }

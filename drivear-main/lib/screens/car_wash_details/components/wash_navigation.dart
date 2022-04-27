@@ -8,10 +8,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-class CarWashNavigation extends StatelessWidget {
-  final CarWash? carWash;
+class WashNavigation extends StatelessWidget {
+  final Wash? carWash;
 
-  const CarWashNavigation({Key? key, this.carWash}) : super(key: key);
+  const WashNavigation({Key? key, this.carWash}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

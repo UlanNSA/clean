@@ -3,14 +3,14 @@ import 'package:car_wash/models/car_wash_model.dart';
 import 'package:car_wash/network/FirebaseApi.dart';
 import 'package:flutter/cupertino.dart';
 
-class CarWashProvider with ChangeNotifier{
-  List<CarWash>? _carWashs = [];
+class WashProvider with ChangeNotifier{
+  List<Wash>? _carWashs = [];
 
-  List<CarWash>? get carWashs => _carWashs;
+  List<Wash>? get carWashs => _carWashs;
 
-  void addCarWash(CarWash carWash) => FirebaseApi.createCarWash(carWash);
+  void addCarWash(Wash carWash) => FirebaseApi.createCarWash(carWash);
 
-  void setCarWashs(List<CarWash>? carWashs) =>
+  void setCarWashs(List<Wash>? carWashs) =>
       WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
         _carWashs = carWashs;
       });
